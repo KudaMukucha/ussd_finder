@@ -1,0 +1,17 @@
+<div class="items-center text-center mb-4 pt-4">
+    <span>
+        {%if page.has_previous%}
+        <a href="?page={{page.previous_page_number}}"
+            class="text-blue-600 px-3 hover:underline hover:text-blue-800">Previous</a>
+        {%endif%}
+    </span>
+    <span class="text-slate-800 underline">
+        {{page.number}}
+    </span>
+    <span>
+        {%if page.has_next%}
+        <a href="?page={{page.next_page_number}}"
+            class="text-blue-600 px-3 hover:underline hover:text-blue-800">Next</a>
+        {%endif%}
+    </span>
+</div>

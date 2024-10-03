@@ -1,0 +1,83 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover the USSD Shortcut Tool for Zimbabwe. Experience the convenience of accessing hundreds of USSD codes all in one app. Simplify your mobile interactions with a faster and more efficient user experience.">
+    <title>USSD Finder</title>
+    <link rel="stylesheet" href="{%static 'css/styles.css'%}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/svg+xml" href="{%static 'images/info.png'%}" />
+
+</head>
+
+<body>
+
+    <header class="bg-white shadow shadow-neutral-100 relative z-10">
+        <nav class="relative container mx-auto max-w-7xl p-5 ">
+            <!-- Flex container -->
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a class="pt-2 flex items-center" href="/">
+                    <img src="{%static 'images/logo.png'%}" style="width: 40px;" alt="">
+                    <span class="font-bold text-xl text-slate-900">USSD Finder</span>
+                </a>
+
+                <!-- Menu Items -->
+                <ul class="hidden md:flex items-center justify-end gap-10 font-medium text-sm">
+                    <li>
+                        <a href="/" class="text-grayish-blue hover:text-slate-600">Home</a>
+                    </li>
+                    <li>
+                        <a href="{%url 'codes:faqs'%}" class="text-grayish-blue hover:text-slate-600">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="bg-blue-700 text-white px-4 py-2 shadow-xl rounded-bl-lg rounded-tr-lg hover:text-slate-300 hover:shadow-none transition-all duration-300">Get
+                            App</a>
+                    </li>
+                </ul>
+                <!-- Request Invite Button
+                 <a href="#" class="bg-gradient-to-r from-lime-green to-bright-cyan py-3  px-6 rounded-full font-medium text-white text-sm hidden md:block">Request Invite</a> -->
+
+                <!-- Hamburger Icon -->
+                <button id="menu-btn" class="block md:hidden focus:outline-none">
+                    <i class='bx bx-menu bx-md'></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden ">
+                <ul id="menu"
+                    class="absolute space-y-6 bg-white py-8 text-center font-bold mt-10 sm:w-auto self-end sm:self-center left-6 right-6 drop-shadow-md hidden ">
+                    <li>
+                        <a href="/" class="text-grayish-blue hover:text-slate-600">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-grayish-blue hover:text-slate-600">FAQs</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="bg-blue-700 text-white px-4 py-2 shadow-xl rounded-bl-lg rounded-tr-lg hover:text-slate-300 hover:shadow-none transition-all duration-300">Get
+                            App</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {%block content%}
+
+    {%endblock content%}
+
+    <div class="bg-slate-800 items-center text-center p-4">
+        <p class="text-slate-50">Built with &#x1F496; by <a
+                href="https://www.linkedin.com/in/kudakwashe-mukucha-998b3b178/" target="_blank"
+                class="text-blue-500 underline hover:text-blue-700">kuda mukucha</a></p>
+    </div>
+
+    <script src="{%static 'js/script.js'%}"></script>
+</body>
+
+</html>

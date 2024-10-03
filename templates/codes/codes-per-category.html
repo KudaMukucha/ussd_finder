@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+<!--Hero  -->
+<div class="flex flex-col items-center text-center space-y-4 bg-indigo-100 ">
+    <h2 class="mt-5 font-extrabold lg:text-5xl text-3xl text-blue-950">{{category.name}}</h2>
+    <h3 className='text-slate-700 text-sm font-medium'>Find USSD codes available across various mobile network
+        operators, banks, telcos, industries, and utilities.</h3>
+    <div class="w-full lg:px-56 px-4">
+        <form action="{%url 'codes:search'%}" method="get">
+            <input type="text" placeholder="Search for USSD code..."
+                class="placeholder:text-sm w-full  placeholder:px-2 py-4 px-3 text-sm outline-none rounded-lg" name="q">
+        </form>
+    </div>
+    <div class="pb-7 flex flex-wrap justify-center gap-1">
+        <a href="/"
+            class="border border-slate-300 ml-2 px-4 py-2 rounded-md bg-white font- hover:text-blue-700 hover:border-blue-700 hover:font-semibold hover:scale-110 transition-all duration-300 text-sm">All</a>
+        {%for category in categories%}
+        <a href="{%url 'codes:category-codes' category.name%}"
+            class="border border-slate-300 ml-2 px-4 py-2 rounded-md bg-white font- hover:text-blue-700 hover:border-blue-700 hover:font-semibold hover:scale-110 transition-all duration-300 text-sm">{{category.name}}</a>
+        {%endfor%}
+    </div>
+</div>
+
+<div class="bg-gradient-to-b from-indigo-100 via-indigo-300  pt-4 pb-4 min-h-screen">
+    {%if codes%}
+    <div class="px-4 lg:px-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {%for code in codes%}
+        <div class="bg-white p-6 border border-gray-200 rounded-lg shadow flex flex-col">
+            <i class='bx bxs-phone bx-lg text-gray-500 mb-2'></i>
+            <a href="{%url 'codes:code-detail' code.slug%}"
+                class="mb-2 text-[19px] font-semibold tracking-tight text-slate-900 hover:text-blue-700">{{code.name}}</a>
+            <p class="mb-3 font-normal text-gray-500">{{code.description | truncatewords:6}}</p>
+            <div class="flex items-center justify-between">
+                <a href="tel:{{code.code}}"
+                    class="inline-flex font-bold items-center text-slate-950 text-xl hover:text-blue-600 hover:scale-105 transition-all duration-75">
+                    {{code.code}}
+                    <i class='bx bxs-right-top-arrow-circle'></i>
+                </a>
+                <p class="text-blue-600 font-medium">{{code.category}}</p>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    {%else%}
+
+    <div class="px-4 lg:px-14 mt-10">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow text-center items-center">
+            <p>No codes at the moment</p>
+        </div>
+    </div>
+    {%endif%}
+    {%include 'pagination.html' with page=codes%}
+</div>
+{%endblock%}
